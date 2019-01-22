@@ -65,4 +65,17 @@ public class MuzixController {
         }
         return responseEntity;
     }
+//@Query and parameter passing to @Query//
+    @GetMapping("user/{trackName}")
+    public ResponseEntity<?> findTrackByName(@PathVariable String trackName){
+        ResponseEntity responseEntity;
+        try {
+
+            responseEntity = new ResponseEntity<User>(muzixService.findTrackByName(trackName),HttpStatus.OK);
+        } catch (Exception ex) {
+            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }
+

@@ -35,4 +35,9 @@ public class MuzixServiceImpl implements MuzixService {
         User updateUser = muzixRepository.save(user);
         return updateUser;
     }
+    @Override
+    public User findTrackByName(String trackName){
+        User findTrackByName = muzixRepository.findTrackByName(trackName);
+        return findTrackByName;
+    }
 }

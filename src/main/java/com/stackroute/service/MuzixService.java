@@ -12,4 +12,7 @@ public interface MuzixService {
 
     public List<User> deleteById(int trackId);
 
-    public User updateUser(User user);}
+    public User updateUser(User user);
+
+    public User findTrackByName(String trackName);
+}
