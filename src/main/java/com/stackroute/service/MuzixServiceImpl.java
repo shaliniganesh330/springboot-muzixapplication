@@ -1,6 +1,8 @@
 package com.stackroute.service;
 
 import com.stackroute.domain.User;
+import com.stackroute.exceptions.TrackAlreadyExistsException;
+import com.stackroute.exceptions.TrackNotFoundException;
 import com.stackroute.repository.MuzixRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,14 @@ public class MuzixServiceImpl implements MuzixService {
         this.muzixRepository=muzixRepository;
     }
     @Override
-    public User saveUser(User user) {
+    public User saveUser(User user) throws TrackAlreadyExistsException {
+        if(muzixRepository.existsById(user.getTrackId())){
+            throw new TrackAlreadyExistsException("User already exists");
+        }
         User savedUser = muzixRepository.save(user);
+        if(savedUser == null){
+            throw new TrackAlreadyExistsException("User already exists");
+        }
         return savedUser;
     }
 
@@ -25,8 +33,12 @@ public class MuzixServiceImpl implements MuzixService {
     public List<User> getAllUsers() {
         return muzixRepository.findAll();
     }
+
     @Override
-    public List<User> deleteById(int trackId){
+    public List<User> deleteById(int trackId) throws TrackNotFoundException {
+//        if(muzixRepository.deleteById==0){
+        if(trackId==0){
+        throw new TrackNotFoundException("User not found");}
         muzixRepository.deleteById(trackId);
         return muzixRepository.findAll();
     }
