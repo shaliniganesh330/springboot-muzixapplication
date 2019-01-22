@@ -16,6 +16,7 @@ public class MuzixController {
     public MuzixController(MuzixService muzixService){
         this.muzixService=muzixService;
     }
+    //Saving track information such as trackId,trackcomments,trackname//
     @PostMapping("user")
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         ResponseEntity responseEntity;
@@ -27,7 +28,7 @@ public class MuzixController {
         }
         return responseEntity;
     }
-
+    //Displaying saved track.//
     @GetMapping("users")
     public ResponseEntity<?> getAllUsers() {
         ResponseEntity responseEntity;
@@ -38,6 +39,8 @@ public class MuzixController {
         }
         return responseEntity;
     }
+
+    //Removing track.//
     @DeleteMapping("user/{trackId}")
     public ResponseEntity<?> deleteById(@PathVariable int trackId) {
         ResponseEntity responseEntity;
@@ -49,6 +52,8 @@ public class MuzixController {
         }
         return responseEntity;
     }
+
+    //Update track.//
     @PutMapping("update")
     public ResponseEntity<?> updateUser(@RequestBody User user) {
         ResponseEntity responseEntity;

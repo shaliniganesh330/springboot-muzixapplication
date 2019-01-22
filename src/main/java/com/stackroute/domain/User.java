@@ -17,6 +17,7 @@ public class User {
     public void setTrackId(int trackId) {
         this.trackId = trackId;
     }
+    //constructor class//
     public User()
     {
 
@@ -27,7 +28,7 @@ public class User {
         this.trackName = trackName;
         this.trackComments = trackComments;
     }
-
+    //Overriding toString method//
     @Override
     public String toString() {
         return "User{" +
@@ -36,7 +37,7 @@ public class User {
                 ", trackComments='" + trackComments + '\'' +
                 '}';
     }
-
+    //setter and getter methods//
     public String getTrackName() {
         return trackName;
     }
