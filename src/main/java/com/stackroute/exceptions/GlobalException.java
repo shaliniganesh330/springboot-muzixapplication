@@ -5,18 +5,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-
 @ControllerAdvice
 public class GlobalException {
+    //ExceptionHandler annotation for TrackAlreadyExistsException//
     @ExceptionHandler(TrackAlreadyExistsException.class)
     public ResponseEntity handleTrackAlreadyExistsException(Exception ex){
         return new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
     }
-
+    //ExceptionHandler annotation for TrackNotFoundException//
     @ExceptionHandler(TrackNotFoundException.class)
     public ResponseEntity handleTrackNotFoundException( Exception ex){
         return new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
     }
-
-
 }

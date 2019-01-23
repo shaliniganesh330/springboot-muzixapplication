@@ -15,10 +15,10 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 @PropertySource("classpath:property.properties")
 public class MuzixApplication implements ApplicationListener<ContextRefreshedEvent>,CommandLineRunner {
+
 	//by using @Value application property//
 	@Value("4")
 	private int trackId;
-//	@Value("shalini")
 	// by using @property//
 	@Value("${trackName}")
 	private String trackName;
@@ -33,15 +33,13 @@ public class MuzixApplication implements ApplicationListener<ContextRefreshedEve
 	public static void main(String[] args) {
 		SpringApplication.run(MuzixApplication.class, args);
 	}
+	//Overrided onApplicationEvent//
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 		muzixRepository.save(new Track(trackId,trackName,trackComments));
 	}
-//	@Override
-//	public void run(String... args) throws Exception {
-//		muzixRepository.save(new Track(trackId,trackName,trackComments));
-//	}
-	//CommandLineRunner//
+
+	//Overrided CommandLineRunner//
 	@Override
 	public void run(String...args)throws Exception{
 		muzixRepository.save(new Track(Integer.parseInt(env.getProperty("trackId")),env.getProperty("trackName"),env.getProperty("trackComments")));
