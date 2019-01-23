@@ -1,6 +1,6 @@
 package com.stackroute.service;
 
-import com.stackroute.domain.User;
+import com.stackroute.domain.Track;
 import com.stackroute.exceptions.TrackAlreadyExistsException;
 import com.stackroute.exceptions.TrackNotFoundException;
 import com.stackroute.repository.MuzixRepository;
@@ -17,38 +17,39 @@ public class MuzixServiceImpl implements MuzixService {
     public MuzixServiceImpl(MuzixRepository muzixRepository){
         this.muzixRepository=muzixRepository;
     }
+
     @Override
-    public User saveUser(User user) throws TrackAlreadyExistsException {
-        if(muzixRepository.existsById(user.getTrackId())){
-            throw new TrackAlreadyExistsException("User already exists");
+    public Track saveTrack(Track track) throws TrackAlreadyExistsException {
+        if(muzixRepository.existsById(track.getTrackId())){
+            throw new TrackAlreadyExistsException("Track already exists");
         }
-        User savedUser = muzixRepository.save(user);
-        if(savedUser == null){
-            throw new TrackAlreadyExistsException("User already exists");
+        Track savedTrack = muzixRepository.save(track);
+        if(savedTrack == null){
+            throw new TrackAlreadyExistsException("Track already exists");
         }
-        return savedUser;
+        return savedTrack;
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<Track> getAllTracks() {
         return muzixRepository.findAll();
     }
 
     @Override
-    public List<User> deleteById(int trackId) throws TrackNotFoundException {
+    public List<Track> deleteById(int trackId) throws TrackNotFoundException {
         if(trackId==0){
-        throw new TrackNotFoundException("User not found");}
+        throw new TrackNotFoundException("Track not found");}
         muzixRepository.deleteById(trackId);
         return muzixRepository.findAll();
     }
     @Override
-    public User updateUser(User user){
-        User updateUser = muzixRepository.save(user);
-        return updateUser;
+    public Track updateTrack(Track track){
+        Track updateTrack = muzixRepository.save(track);
+        return updateTrack;
     }
     @Override
-    public User findTrackByName(String trackName){
-        User findTrackByName = muzixRepository.findTrackByName(trackName);
+    public Track findTrackByName(String trackName){
+        Track findTrackByName = muzixRepository.findTrackByName(trackName);
         return findTrackByName;
     }
 }

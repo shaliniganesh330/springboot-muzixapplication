@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class Track {
     @Id
     private int trackId;
     private  String trackName;
@@ -27,12 +27,12 @@ public class User {
 //        this.trackId = trackId;
 //    }
 //    //constructor class//
-//    public User()
+//    public Track()
 //    {
 //
 //    }
 //
-//    public User(int trackId, String trackName, String trackComments) {
+//    public Track(int trackId, String trackName, String trackComments) {
 //        this.trackId = trackId;
 //        this.trackName = trackName;
 //        this.trackComments = trackComments;
@@ -40,7 +40,7 @@ public class User {
 //    //Overriding toString method//
 //    @Override
 //    public String toString() {
-//        return "User{" +
+//        return "Track{" +
 //                "trackId=" + trackId +
 //                ", trackName='" + trackName + '\'' +
 //                ", trackComments='" + trackComments + '\'' +

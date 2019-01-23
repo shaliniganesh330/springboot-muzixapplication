@@ -1,6 +1,6 @@
 package com.stackroute;
 
-import com.stackroute.domain.User;
+import com.stackroute.domain.Track;
 import com.stackroute.repository.MuzixRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,15 +35,15 @@ public class MuzixApplication implements ApplicationListener<ContextRefreshedEve
 	}
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-		muzixRepository.save(new User(trackId,trackName,trackComments));
+		muzixRepository.save(new Track(trackId,trackName,trackComments));
 	}
 //	@Override
 //	public void run(String... args) throws Exception {
-//		muzixRepository.save(new User(trackId,trackName,trackComments));
+//		muzixRepository.save(new Track(trackId,trackName,trackComments));
 //	}
 	//CommandLineRunner//
 	@Override
 	public void run(String...args)throws Exception{
-		muzixRepository.save(new User(Integer.parseInt(env.getProperty("trackId")),env.getProperty("trackName"),env.getProperty("trackComments")));
+		muzixRepository.save(new Track(Integer.parseInt(env.getProperty("trackId")),env.getProperty("trackName"),env.getProperty("trackComments")));
 	}
 }
