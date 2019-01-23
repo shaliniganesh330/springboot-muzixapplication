@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class MuzixServiceImpl implements MuzixService {
-    MuzixRepository muzixRepository;
+    private MuzixRepository muzixRepository;
 
     @Autowired
     public MuzixServiceImpl(MuzixRepository muzixRepository){
@@ -36,7 +36,6 @@ public class MuzixServiceImpl implements MuzixService {
 
     @Override
     public List<User> deleteById(int trackId) throws TrackNotFoundException {
-//        if(muzixRepository.deleteById==0){
         if(trackId==0){
         throw new TrackNotFoundException("User not found");}
         muzixRepository.deleteById(trackId);

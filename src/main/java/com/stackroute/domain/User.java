@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,9 +16,9 @@ import javax.persistence.Id;
 @Builder
 public class User {
     @Id
-    int trackId;
-    String trackName;
-    String trackComments;
+    private int trackId;
+    private  String trackName;
+    private  String trackComments;
 //    public int getTrackId() {
 //        return trackId;
 //    }
