@@ -46,9 +46,9 @@ public class MuzixController {
         ResponseEntity responseEntity;
         try {
             muzixService.deleteById(trackId);
-            responseEntity = new ResponseEntity<List<Track>>(muzixService.getAllTracks(),HttpStatus.OK);
+            responseEntity = new ResponseEntity<List<Track>>(muzixService.getAllTracks(),HttpStatus.FOUND);
         } catch (Exception ex) {
-            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.NOT_FOUND);
         }
         return responseEntity;
     }
@@ -73,7 +73,7 @@ public class MuzixController {
 
             responseEntity = new ResponseEntity<Track>(muzixService.findTrackByName(trackName),HttpStatus.OK);
         } catch (Exception ex) {
-            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.NOT_FOUND);
         }
         return responseEntity;
     }
