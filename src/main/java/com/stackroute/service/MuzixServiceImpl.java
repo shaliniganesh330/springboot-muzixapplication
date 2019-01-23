@@ -36,11 +36,12 @@ public class MuzixServiceImpl implements MuzixService {
     }
 
     @Override
-    public List<Track> deleteById(int trackId) throws TrackNotFoundException {
-        if(trackId==0){
-        throw new TrackNotFoundException("Track not found");}
-        muzixRepository.deleteById(trackId);
-        return muzixRepository.findAll();
+    public void deleteById(String trackId) throws TrackNotFoundException {
+        int temp = new Integer(trackId);
+        if(!muzixRepository.existsById(temp)){
+        throw new TrackNotFoundException("Track not found");
+        }
+         muzixRepository.deleteById(temp);
     }
     @Override
     public Track updateTrack(Track track){

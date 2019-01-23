@@ -12,7 +12,7 @@ public interface MuzixService {
 
     public List<Track> getAllTracks() ;
 
-    public List<Track> deleteById(int trackId) throws TrackNotFoundException;
+    public void deleteById(String trackId) throws TrackNotFoundException;
 
     public Track updateTrack(Track track) ;
 

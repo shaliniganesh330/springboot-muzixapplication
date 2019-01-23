@@ -42,7 +42,7 @@ public class MuzixController {
 
     //Removing track.//
     @DeleteMapping("track/{trackId}")
-    public ResponseEntity<?> deleteById(@PathVariable int trackId) {
+    public ResponseEntity<?> deleteById(@PathVariable String trackId) {
         ResponseEntity responseEntity;
         try {
             muzixService.deleteById(trackId);
